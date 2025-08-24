@@ -17,16 +17,30 @@ const LoginPage = () => {
           </p>
           <form action=''>
             <div className='mb-4'>
+              <label
+                htmlFor='email'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Enter Your Email
+              </label>
               <input
+                id='email'
                 type='email'
-                placeholder='Enter your Email'
+                placeholder='example@gmail.com'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>
             <div className='mb-4'>
+              <label
+                htmlFor='password'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Enter Your Password
+              </label>
               <input
+                id='password'
                 type='password'
-                placeholder='Enter your Password'
+                placeholder='Password'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>

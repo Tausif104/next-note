@@ -15,37 +15,72 @@ const RegistrationPage = () => {
           </p>
           <form action=''>
             <div className='mb-4'>
+              <label
+                htmlFor='email'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Enter Your Email
+              </label>
               <input
+                id='email'
                 type='email'
-                placeholder='Enter your Email'
+                placeholder='example@gmail.com'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>
             <div className='mb-4'>
+              <label
+                htmlFor='fname'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Enter Your First Name
+              </label>
               <input
+                id='fname'
                 type='text'
-                placeholder='Enter your First Name'
+                placeholder='John'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>
             <div className='mb-4'>
+              <label
+                htmlFor='fname'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Enter Your Last Name
+              </label>
               <input
+                id='lname'
                 type='text'
-                placeholder='Enter your Last Name'
+                placeholder='Doe'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>
             <div className='mb-4'>
+              <label
+                htmlFor='password'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Enter Your Password
+              </label>
               <input
+                id='password'
                 type='password'
-                placeholder='Enter your Password'
+                placeholder='Password'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>
             <div className='mb-4'>
+              <label
+                htmlFor='confirmPassword'
+                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
+              >
+                Confirm Password
+              </label>
               <input
+                id='confirmPassword'
                 type='password'
-                placeholder='Confirm Password'
+                placeholder='Password'
                 className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
               />
             </div>
