@@ -5,13 +5,11 @@ const LoginPage = () => {
   return (
     <>
       <div className='flex items-center justify-center h-screen'>
-        <div className='container max-w-[400px] shadow-lg bg-whiteshadow-lg p-7 rounded-lg text-center'>
+        <div className='container max-w-[450px] shadow-xl bg-whiteshadow-lg p-7 rounded-xl text-center'>
           <div className='text-center mb-3'>
             <LogInIcon className='mx-auto  text-green-400' />
           </div>
-          <h1 className='text-xl font-bold text-black mb-1'>
-            Sign In with Email
-          </h1>
+          <h1 className='text-[40px] text-black mb-1 font-bold'>Sign In</h1>
           <p className='text-gray-500 mb-4'>
             Make new notes to bring your note together
           </p>
