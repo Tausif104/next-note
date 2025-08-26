@@ -1,5 +1,7 @@
-import { Geist, Geist_Mono, Poppins } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
+import { connectDB } from '@/lib/db'
+import { Toaster } from 'sonner'
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -13,9 +15,14 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  connectDB()
+
   return (
     <html lang='en'>
-      <body className={`${poppins.variable}  antialiased`}>{children}</body>
+      <body className={`${poppins.variable}  antialiased`}>
+        <Toaster position='top-center' />
+        {children}
+      </body>
     </html>
   )
 }

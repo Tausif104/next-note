@@ -1,7 +1,15 @@
 import { UserPlus2Icon } from 'lucide-react'
 import Link from 'next/link'
+import RegistrationForm from './_components/registrationForm'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 
-const RegistrationPage = () => {
+const RegistrationPage = async () => {
+  const session = await auth()
+
+  if (session?.user) {
+    redirect('/dashboard')
+  }
   return (
     <>
       <div className='flex items-center justify-center h-screen'>
@@ -13,85 +21,8 @@ const RegistrationPage = () => {
           <p className='text-gray-500 mb-4'>
             Make new notes to bring your note together
           </p>
-          <form action=''>
-            <div className='mb-4'>
-              <label
-                htmlFor='email'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Enter Your Email
-              </label>
-              <input
-                id='email'
-                type='email'
-                placeholder='example@gmail.com'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-            <div className='mb-4'>
-              <label
-                htmlFor='fname'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Enter Your First Name
-              </label>
-              <input
-                id='fname'
-                type='text'
-                placeholder='John'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-            <div className='mb-4'>
-              <label
-                htmlFor='fname'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Enter Your Last Name
-              </label>
-              <input
-                id='lname'
-                type='text'
-                placeholder='Doe'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-            <div className='mb-4'>
-              <label
-                htmlFor='password'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Enter Your Password
-              </label>
-              <input
-                id='password'
-                type='password'
-                placeholder='Password'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-            <div className='mb-4'>
-              <label
-                htmlFor='confirmPassword'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Confirm Password
-              </label>
-              <input
-                id='confirmPassword'
-                type='password'
-                placeholder='Password'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-
-            <button
-              type='submit'
-              className='bg-green-400 text-white w-full rounded py-2 inline-block font-semibold cursor-pointer hover:bg-black  transition duration-300'
-            >
-              Register
-            </button>
-          </form>
+          {/* registration form */}
+          <RegistrationForm />
 
           <div className='mt-4'>
             <p className='text-gray-500 text-[14px]'>

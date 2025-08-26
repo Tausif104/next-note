@@ -1,7 +1,16 @@
 import { LogInIcon } from 'lucide-react'
 import Link from 'next/link'
+import LoginForm from './_components/loginForm'
+import { redirect } from 'next/navigation'
+import { auth } from '@/auth'
 
-const LoginPage = () => {
+const LoginPage = async () => {
+  const session = await auth()
+
+  if (session?.user) {
+    redirect('/dashboard')
+  }
+
   return (
     <>
       <div className='flex items-center justify-center h-screen'>
@@ -13,43 +22,7 @@ const LoginPage = () => {
           <p className='text-gray-500 mb-4'>
             Make new notes to bring your note together
           </p>
-          <form action=''>
-            <div className='mb-4'>
-              <label
-                htmlFor='email'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Enter Your Email
-              </label>
-              <input
-                id='email'
-                type='email'
-                placeholder='example@gmail.com'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-            <div className='mb-4'>
-              <label
-                htmlFor='password'
-                className='text-left w-full flex text-gray-400 text-[13px] mb-1'
-              >
-                Enter Your Password
-              </label>
-              <input
-                id='password'
-                type='password'
-                placeholder='Password'
-                className='bg-gray-100 w-full py-2 px-3 rounded outline-none'
-              />
-            </div>
-
-            <button
-              type='submit'
-              className='bg-green-400 text-white w-full rounded py-2 inline-block font-semibold cursor-pointer hover:bg-black  transition duration-300'
-            >
-              Sign In
-            </button>
-          </form>
+          <LoginForm />
 
           <div className='mt-4'>
             <p className='text-gray-500 text-[14px]'>
