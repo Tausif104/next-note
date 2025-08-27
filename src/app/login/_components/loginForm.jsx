@@ -58,7 +58,7 @@ const LoginForm = () => {
         type='submit'
         className='bg-green-400 text-white w-full rounded py-2 inline-block font-semibold cursor-pointer hover:bg-black  transition duration-300'
       >
-        Sign In
+        {pending ? 'Signing In' : 'Sign In'}
       </button>
     </form>
   )

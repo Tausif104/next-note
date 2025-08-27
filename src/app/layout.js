@@ -2,6 +2,7 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import { connectDB } from '@/lib/db'
 import { Toaster } from 'sonner'
+import Image from 'next/image'
 
 const poppins = Poppins({
   variable: '--font-poppins',

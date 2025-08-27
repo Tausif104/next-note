@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { logOut } from '../actions/user-actions'
 import { auth } from '@/auth'
 
 const Dashboard = async () => {
@@ -13,14 +12,6 @@ const Dashboard = async () => {
       <Link className='underline' href='/dashboard/users'>
         Users
       </Link>
-      <form action={logOut}>
-        <button
-          type='submit'
-          className='cursor-pointer bg-black text-white inline-block py-2 px-4'
-        >
-          Log Out
-        </button>
-      </form>
     </>
   )
 }
