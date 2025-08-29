@@ -2,7 +2,9 @@
 
 import { User } from '@/models/user-model'
 import bcrypt from 'bcrypt'
-import { signIn, signOut } from '@/auth'
+import { signIn, signOut, auth } from '@/auth'
+import { revalidatePath } from 'next/cache'
+import mongoose from 'mongoose'
 
 // registration
 export const registerUser = async (prevState, formData) => {
@@ -56,7 +58,7 @@ export const loginUser = async (prevState, formData) => {
 
   if (!user) {
     return {
-      msg: 'User doesnt exis, Please Register.',
+      msg: 'User doesnt exist, Please Register.',
       success: false,
     }
   }
@@ -86,4 +88,59 @@ export const logOut = async () => {
 export const userList = async () => {
   const user = await User.find({})
   return user
+}
+
+// update profile
+export const updateProfile = async (prevState, formData) => {
+  const session = await auth()
+
+  const loggedInUser = await User.findOne({ email: session?.user?.email })
+
+  const { fathersname, mothersname, phone, address, hobby, profession } =
+    Object.fromEntries(formData)
+
+  const updateFields = {
+    fathersname,
+    mothersname,
+    phone,
+    address,
+    hobby,
+    profession,
+  }
+
+  Object.keys(updateFields).forEach(
+    (key) => (updateFields[key] === '' || undefined) && delete updateFields[key]
+  )
+
+  const profileData = {}
+
+  Object.keys(updateFields).forEach(
+    (key) => (profileData[`profile.${key}`] = updateFields[key])
+  )
+
+  const updatedUser = await User.findByIdAndUpdate(
+    loggedInUser.id,
+    profileData,
+    { new: true }
+  )
+
+  if (updatedUser) {
+    return {
+      msg: 'Profile Updated',
+      success: true,
+    }
+  }
+
+  revalidatePath('/dashboard/profile')
+}
+
+// get user profile
+export const getUserProfile = async () => {
+  const session = await auth()
+
+  const user = await User.findOne({ email: session?.user?.email })
+
+  return {
+    user,
+  }
 }

@@ -7,8 +7,6 @@ import LogoutButton from './logoutButton'
 const DashboardNav = () => {
   const pathname = usePathname()
 
-  console.log(pathname)
-
   const menus = [
     {
       label: 'Dashboard',
